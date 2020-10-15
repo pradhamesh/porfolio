@@ -1,0 +1,39 @@
+{% extends 'portfolio/base2.html' %}
+
+{% block content %}
+
+<h1 style="color: darkblue; text-align: center;" >Pradhamesh's Portfolio </h1>
+
+{% load static %}
+
+
+<img src="{% static 'portfolio/IMG-20171221-WA0006.jpg' %}" height = 350  width =300 alt="" style="display: block;margin-left: auto;
+ margin-right: auto;width: 30%;" >
+
+
+ <div class="row justify-content-center mb-3">
+   <div class="col-md-9 text-center">
+     <h2 id="hometext" class="font-weight-bold">R V Pradhamesh has done B.Tech from IIT Madras and is presently working as an IRS officer</h2>
+   </div>
+ </div>
+
+ <h4>This is a family portfolio of the members of his family.</h4>
+
+ <hr>
+
+ <div class="row">
+   {% for project in projects %}
+   <div class="col-lg-4 col-md-6">
+
+     <img src="{{ project.image_portfolio.url }}" height = 350  width =300 alt="">
+     <h3>{{ project.title }}</h3>
+     <p>{{ project.description }}</p>
+     {% if project.url_portfolio %}
+     <a href="{{ project.url_portfolio }}">Link</a>
+     {% endif %}
+
+   </div>
+   {% endfor %}
+ </div>
+
+{% endblock %}
